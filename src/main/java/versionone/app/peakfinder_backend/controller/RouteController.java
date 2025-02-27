@@ -30,4 +30,15 @@ public class RouteController {
     public Route createRoute(@RequestBody Route route) {
         return routeService.createRoute(route);
     }
+
+    @GetMapping("/filter")
+    public List<Route> filterRoutes(
+            @RequestParam(required = false) String difficulty,
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false) String bestSeason,
+            @RequestParam(required = false) Integer maxDuration,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice) {
+        return routeService.filterRoutes(difficulty, type, bestSeason, maxDuration, minPrice, maxPrice);
+    }
 }
